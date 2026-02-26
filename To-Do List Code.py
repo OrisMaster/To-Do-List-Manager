@@ -20,7 +20,6 @@ def Main():
                 EditTasks(fName)
             elif wtd == 'done':
                 break
-        f.close()
 
         # Close file when done
     if exists == 'no':
@@ -31,24 +30,23 @@ def Main():
                 # Add tasks
             AddToDo(fName)
                 # See tasks once done making them
-            with open(fName,'r') as f:
-                print(f.read())
-                    # Then see if they want to add, see, or edit tasks
-                while True:
-                    wtd = WhatToDo()
-                    try:
-                        if wtd == 'see':
+                # Then see if they want to add, see, or edit tasks
+            while True:
+                wtd = WhatToDo()
+                try:
+                    if wtd == 'see':
+                        with open(fName,'r') as f:
                             f.seek(0)
                             print('\n')
                             print(f.read())
-                        elif wtd == 'add':
-                            AddToDo(fName)
-                        elif wtd == 'edit':
-                            EditTasks(fName)
-                        elif wtd == 'done':
-                            break
-                    except:
-                        print("Please enter an actual command. Or make sure that you spelled correctly.")
+                    elif wtd == 'add':
+                        AddToDo(fName)
+                    elif wtd == 'edit':
+                        EditTasks(fName)
+                    elif wtd == 'done':
+                        break
+                except:
+                    print("Please enter an actual command. Or make sure that you spelled correctly.")
             # If no, then:
         elif yOrN == 'no':
                 # Print what might've happend, and see if want to delete file
@@ -127,3 +125,4 @@ def DelOrEdit(fName, lNum, dOrE):
         return
 
 Main()
+input("Press enter to quit...")
