@@ -10,8 +10,9 @@ def Main():
         while True:
             wtd = WhatToDo()
             if wtd == 'see':
-                print('\n')
-                print(f.read())
+                with open(f.name,'r') as f:
+                    print('\n')
+                    print(f.read())
             elif wtd == 'add':
                 AddToDo(f)
             elif wtd == 'edit':
